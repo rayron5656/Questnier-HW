@@ -43,9 +43,10 @@ export class QuestionsComponent implements OnInit {
     }
     else{
       this.myResult.name = Form.name;
-      this.myResult.score = 50;
+      this.myResult.score = this.setScore();
       this.myResult.isDone = true;
       console.log(this.myResult);
+      console.log(Form);
     }
   }
 
@@ -74,6 +75,35 @@ export class QuestionsComponent implements OnInit {
     }
     this.thirdQ = true;
     
+
+  }
+
+  setScore():number{
+    let score:Number = this.petpic + this.icepic + this.sportpic;
+    switch (score) {
+      case 3:
+          return 100;
+        
+        case 4:
+          return 85;
+        
+        case 5:
+          return 70;
+        
+        case 6:
+          return 55;
+        
+        case 7:
+          return 40;
+        
+        case 8:
+          return 25;
+        
+        case 9:
+          return 10;
+        default:
+        return 50;
+    }
 
   }
 

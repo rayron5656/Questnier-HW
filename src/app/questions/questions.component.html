@@ -70,6 +70,13 @@
             <button [hidden]="!(firstQ && secQ && thirdQ)" class="btn btn-primary" type="submit">Finish</button>
         </form>
         <div class="col-12" [hidden]="myResult.isDone === false">
+            <div class="card" style="width: 18rem;">
+                <img src="" class="card-img-top" >
+                <div class="card-body">
+                  <p class="card-text"><span><strong>{{myResult.name}}</strong></span> your score is <span><strong>{{myResult.score}}</strong></span></p>
+                  <p class="card-text"></p>
+                </div>
+              </div>
 
         </div>
     </div>
