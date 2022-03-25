@@ -1,5 +1,76 @@
 <div class="container">
     <div class="col-12">
         <h1>Check if you are totach al min ahalal</h1>
+        <form #QForm="ngForm" [hidden]="myResult.isDone === true" (submit)="handleSubmitQuestions(QForm.value)">
+            <input type="text" ngModel name="name" placeholder="Enter your name">
+            <div class="col-12">
+                <h2>Favourite pet:</h2>
+                <img [hidden]="petpic != 1" src="/dog.jpg">
+                <img [hidden]="petpic != 2" src="/cat.jpg">
+                <img [hidden]="petpic != 3" src="/snake.jpg">
+                <div>
+                    <input (click)="changePetPic(1)" type="radio" ngModel id="dog" name="pet" value="dog"
+                           checked>
+                    <label for="dog">Dog</label>
+                  </div>
+                  
+                  <div>
+                    <input (click)="changePetPic(2)" type="radio" ngModel id="cat" name="pet" value="checatese">
+                    <label for="cat">Cat</label>
+                  </div>
+                  
+                  <div>
+                    <input (click)="changePetPic(3)" type="radio" ngModel  id="snake" name="pet" value="snake">
+                    <label for="snake">Snake</label>
+                  </div>
+            </div>
+            <div class="col-12">
+                <h2>Favourite ice-cream:</h2>
+                <img [hidden]="icepic != 1" src="/chocolate.jpg">
+                <img [hidden]="icepic != 2" src="/vanilla.jpg">
+                <img [hidden]="icepic != 3" src="/strawberry.jpg">
+                <div>
+                    <input (click)="changeIcePic(1)" type="radio" ngModel id="chocolate" name="iceCream" value="chocolate"
+                           checked>
+                    <label for="chocolate">Chocolate</label>
+                  </div>
+                  
+                  <div>
+                    <input (click)="changeIcePic(2)" type="radio" ngModel id="vanilla" name="iceCream" value="vanilla">
+                    <label for="vanilla">Vanilla</label>
+                  </div>
+                  
+                  <div>
+                    <input (click)="changeIcePic(3)" type="radio" ngModel  id="strawberrt" name="iceCream" value="strawberrt">
+                    <label for="strawberrt">Strawberry</label>
+                  </div>
+            </div>
+            <div class="col-12">
+                <h2>Favourite sport:</h2>
+                <img [hidden]="sportpic != 1" src="/chocolate.jpg">
+                <img [hidden]="sportpic != 2" src="/vanilla.jpg">
+                <img [hidden]="sportpic != 3" src="/strawberry.jpg">
+                <div>
+                    <input (click)="changeSportPic(1)" type="radio" ngModel id="basketball" name="sport" value="basketball"
+                           checked>
+                    <label for="basketball">Basketball</label>
+                  </div>
+                  
+                  <div>
+                    <input (click)="changeSportPic(2)" type="radio" ngModel id="football " name="sport" value="football ">
+                    <label for="football ">Football </label>
+                  </div>
+                  
+                  <div>
+                    <input (click)="changeSportPic(3)" type="radio" ngModel  id="esport" name="sport" value="esport">
+                    <label for="esport">Esport</label>
+                  </div>
+            </div>
+            <hr>
+            <button [hidden]="!(firstQ && secQ && thirdQ)" class="btn btn-primary" type="submit">Finish</button>
+        </form>
+        <div class="col-12" [hidden]="myResult.isDone === false">
+
+        </div>
     </div>
 </div>
