@@ -23,18 +23,25 @@ export class QuestionsComponent implements OnInit {
   secQ:boolean = false;
   thirdQ:boolean = false;
 
+  
+
   petpic:number = 0;
   icepic:number = 0;
   sportpic:number = 0;
   counter:number = 0;
 
   myResult:result = {name:'',score:0,isDone:false};
-
+  
+  readonly RESULLT_KEY = 'result';
 
 
   constructor() { }
 
   ngOnInit(): void {
+    let savedTasks = localStorage.getItem(this.RESULLT_KEY);
+    if (savedTasks != null) {
+      this.myResult = JSON.parse(savedTasks);
+    }
   }
 
   handleSubmitQuestions(Form:any){
@@ -47,6 +54,8 @@ export class QuestionsComponent implements OnInit {
       this.myResult.isDone = true;
       console.log(this.myResult);
       console.log(Form);
+      localStorage.setItem('result',JSON.stringify(this.myResult));
+
     }
   }
 

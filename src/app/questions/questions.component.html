@@ -1,13 +1,13 @@
 <div class="container">
     <div class="col-12">
-        <h1>Check if you are totach al min ahalal</h1>
+        <h1 style="padding: 25px;">Check if you are totach al min ahalal:</h1>
         <form #QForm="ngForm" [hidden]="myResult.isDone === true" (submit)="handleSubmitQuestions(QForm.value)">
             <input type="text" ngModel name="name" placeholder="Enter your name">
             <div class="col-12">
                 <h2>Favourite pet:</h2>
-                <img [hidden]="petpic != 1" src="/dog.jpg">
-                <img [hidden]="petpic != 2" src="/cat.jpg">
-                <img [hidden]="petpic != 3" src="/snake.jpg">
+                <img [hidden]="petpic != 1" src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg">
+                <img [hidden]="petpic != 2" src="https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=49ed3252c0b2ffb49cf8b508892e452d">
+                <img [hidden]="petpic != 3" src="https://s3-us-west-2.amazonaws.com/melingoimages/Images/88454.jpg">
                 <div>
                     <input (click)="changePetPic(1)" type="radio" ngModel id="dog" name="pet" value="dog"
                            checked>
@@ -26,9 +26,9 @@
             </div>
             <div class="col-12">
                 <h2>Favourite ice-cream:</h2>
-                <img [hidden]="icepic != 1" src="/chocolate.jpg">
-                <img [hidden]="icepic != 2" src="/vanilla.jpg">
-                <img [hidden]="icepic != 3" src="/strawberry.jpg">
+                <img [hidden]="icepic != 1" src="https://www.thespruceeats.com/thmb/COMM8fP6QZg4bppB6OCAPRZoP-U=/2042x2042/smart/filters:no_upscale()/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg">
+                <img [hidden]="icepic != 2" src="https://www.kosher.com/resized/details.slide/g/l/glidat_vanil_large.jpg">
+                <img [hidden]="icepic != 3" src="https://www.alattefood.com/wp-content/uploads/2015/05/Homemade-Strawberry-Ice-Cream-Recipe-37.jpg">
                 <div>
                     <input (click)="changeIcePic(1)" type="radio" ngModel id="chocolate" name="iceCream" value="chocolate"
                            checked>
@@ -47,9 +47,9 @@
             </div>
             <div class="col-12">
                 <h2>Favourite sport:</h2>
-                <img [hidden]="sportpic != 1" src="/basketball.jpg">
-                <img [hidden]="sportpic != 2" src="/soccer.jpg">
-                <img [hidden]="sportpic != 3" src="/export.jpg">
+                <img [hidden]="sportpic != 1" src="https://www.history.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc4NjAzNTE3NDcwMDI1/ask-history-who-invented-basketball-istock_000006523151large-2.jpg">
+                <img [hidden]="sportpic != 2" src="https://i2-prod.football.london/incoming/article17909924.ece/ALTERNATES/s1200c/0_GettyImages-1210995196.jpg">
+                <img [hidden]="sportpic != 3" src="https://static.owayo-cdn.com/newhp/img/magazin/esportstournaments/esports-most-popular-tournaments-worldwide-670px.jpg">
                 <div>
                     <input (click)="changeSportPic(1)" type="radio" ngModel id="basketball" name="sport" value="basketball"
                            checked>
@@ -71,10 +71,15 @@
         </form>
         <div class="col-12" [hidden]="myResult.isDone === false">
             <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" >
+                <img src="https://static.toiimg.com/thumb/msid-79831405,width-1200,height-900,resizemode-4/.jpg" [hidden]="myResult.score < 85" class="card-img-top" >
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Cannon%2C_Ch%C3%A2teau_du_Haut-Koenigsbourg%2C_France.jpg" [hidden]="myResult.score > 85 || myResult.score <= 40" class="card-img-top" >
+                <img src="https://assets.catawiki.nl/assets/2019/10/9/2/1/f/21f4b186-1f16-4d0a-9e35-64d2fd194a05.jpg" [hidden]="myResult.score > 40" class="card-img-top" >
                 <div class="card-body">
                   <p class="card-text"><span><strong>{{myResult.name}}</strong></span> your score is <span><strong>{{myResult.score}}</strong></span></p>
-                  <p class="card-text"></p>
+                  <p class="card-text" [hidden]="myResult.score < 85">Perfect</p>
+                  <p class="card-text" [hidden]="myResult.score > 85 || myResult.score <= 40 ">You could be better</p>
+                  <p class="card-text" [hidden]="myResult.score > 40">you couldn't been worst</p>
+
                 </div>
               </div>
 
